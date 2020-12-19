@@ -1,16 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
+/*il comenteret barcha bach tkon fahimni fach 9a3id na3mil*/
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float speed = 8f;//default is 8
     [SerializeField] private float jumpSpeed = 8f;
     [SerializeField] private float jumpForce = 30f;//default is 30
     [SerializeField] private int maxJumps = 2;//default is 2
-    private int jumps = 0;//the amount of jumps player has done
+    [SerializeField] private int score = 0;
+    [SerializeField] private float distance;
     [SerializeField] private bool isGrounded = true;//Checks if player is touching the ground - default true
-
+    private int jumps = 0;//the amount of jumps player has done
+    public Text endText;//end level text
     SpriteRenderer sr;//the player's sprite renderer
     Rigidbody2D rb;//the player's rigidbody
 
@@ -75,6 +78,17 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = new Vector2(-jumpSpeed, rb.velocity.y);
 
         }
-
     }
+    private void OnTriggerstay2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "trig")
+        {
+            score = score + 30;
+            Debug.Log(score);
+            endText.text = ("you have complited level 1");     
+            Vector3 spawnPosition = new Vector3(transform.position.x + distance,0);
+            /*move to the next level in work*/
+        }
+    }
+
 }

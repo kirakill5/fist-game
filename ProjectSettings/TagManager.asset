@@ -7,6 +7,7 @@ TagManager:
   - block
   - ground
   - top
+  - trig
   layers:
   - Default
   - TransparentFX
