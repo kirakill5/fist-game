@@ -12,6 +12,7 @@ TagManager:
   - boutten
   - break
   - coin
+  - win
   layers:
   - Default
   - TransparentFX

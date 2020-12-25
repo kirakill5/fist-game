@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     private int jumps = 0;//the amount of jumps player has done
     public Text levelText;//the score number text
     public Text pointText;
+    public Text winText;
+    public Text winpointText;
     Rigidbody2D rb;//the player's rigidbody
 
 
@@ -93,8 +95,17 @@ public class PlayerMovement : MonoBehaviour
         {
             point++;//Increment score
             Debug.Log(point);//Show the score in the console
-            Debug.Log("Increase Score!");//dima hot faza kif haka fi kol foc
+            Debug.Log("coin-");//dima hot faza kif haka fi kol foc
             pointText.text = point.ToString();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "win")
+        {
+            Debug.Log("win");
+            winText.text = "you win!!";
+            winpointText.text = "you have " + point + " points out of 47 point";
         }
     }
 }
